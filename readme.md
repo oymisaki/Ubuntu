@@ -4,6 +4,15 @@
 更多关于桌面 `ubuntu` 的使用见 `大数据上机实习`
 更多关于远程部署 `tomcat` + `mysql` + `jsp` 的内容见 `javahomework` 的大作业部分
 
+**端口占用**
++ `tomcat`: 8080
+  开机不自启动，`$TOMCAT_HOME/bin/startup.sh` 启动
++ `flask`: 5000
+  开机不自启动，
++ `jupyter`: 8888
++ `nextcloud`:80
+
+
 ## 基本操作
 + 允许远程 `root` 登陆
 ```shell
@@ -14,6 +23,8 @@ vim /etc/ssh/sshd_config
 + `~/.bashrc` 作用于当前用户，`etc/profile` 作用于所有用户
 + `sudo` 命令在 `sh bin/startup.sh` 之前
 + 将服务启动文件放入 `/etc/init.d` 中可以变成自启动服务
++ `vim` 下 `\` 后加关键词查找
++ `ps aux|less` 查看所有进程
 
 **权限问题**
 + 修改、查看文件时需要注意权限，比如 `vi` 命令，在用户没有读权限时是打不开文件的，类似的命令还有 `gedit`
@@ -73,11 +84,14 @@ nohup jupyter notebook > /data/jupyter/jupyter.log 2>&1 &
 详见 https://www.cnblogs.com/douzujun/p/8453030.html
 
 ## 部署flask
+
 直接将 `python` 工程目录上传到 `linux` 上就可以部署。
 ```shell
 python3 web.py
 ```
+
 不过此时是前台运行，要转到后台运行，需要增加一行命令
+
 ```shell
 nohup python3 web.py &
 ```
